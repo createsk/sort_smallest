@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>追加した数値を値が小さい順に並べ替える</title>
+</head>
+<body>
+    <input type="number" id="inputNumber" inputmode="numeric">
+    <button onclick="addNumber()">追加する</button>
+    <div id="output"></div>
+
+    <script>
+        let numbers = []; // 数字を格納する配列
+
+        function addNumber() {
+            const input = document.getElementById("inputNumber");
+            const value = parseInt(input.value); // 入力された値を整数に変換
+
+            if (!isNaN(value)) { // 入力された値が数値であることを確認
+                numbers.push(value); // 配列に数値を追加
+                updateOutput(); // 出力を更新
+            }
+
+            input.value = ""; // 入力欄をクリア
+        }
+
+        function updateOutput() {
+            const outputDiv = document.getElementById("output");
+            numbers.sort((a, b) => a - b); // 配列を小さい順に並べ替える
+            outputDiv.innerHTML = numbers.join(", "); // 配列を文字列に変換して表示
+        }
+    </script>
+</body>
+</html>
